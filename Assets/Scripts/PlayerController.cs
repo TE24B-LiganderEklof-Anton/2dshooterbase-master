@@ -88,7 +88,6 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             currentHp--;
-            print("ouchies " + currentHp);
             hpSlider.value = currentHp;
         }
 

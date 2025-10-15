@@ -11,5 +11,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/GameOver.unity
     guid: 7239267408b3fe94e9a13c7cc5771d14
+  - enabled: 1
+    path: Assets/Upgrade.unity
+    guid: b2062c28fab2ca44da0d00031b1c3fc0
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
