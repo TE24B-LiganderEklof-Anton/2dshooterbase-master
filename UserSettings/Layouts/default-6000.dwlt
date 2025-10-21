@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1280
     height: 629.3334
   m_ShowMode: 4
-  m_Title: Scene
+  m_Title: Game
   m_RootView: {fileID: 7}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -508,7 +508,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: d864feff5c66fefffa9cfeff709dfeffe29dfeffb400ffffbc00ffffe419ffff464bffffb84bffff404cffff4063ffff5e64fffff08affffd091ffff7694ffff10a3ffff1ea3ffffb0beffff18c1ffff04c7ffff64c7ffffd4c7ffff4ac8ffff14fbfffff4fffffff6790000fe7900005c7b0000667b00005c840000768400007a8800009c880000a6880000
+      m_ExpandedIDs: 1afbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
