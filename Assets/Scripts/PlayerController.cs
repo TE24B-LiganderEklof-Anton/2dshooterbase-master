@@ -6,15 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField]
-    float speed = 5f;
+    // [SerializeField]
+    float speed = 0.01f;
     [SerializeField]
     GameObject boltprefab;
     float timeSinceLastShot = 0;
-    [SerializeField]
-    float timeBetweenShots = 0.5f;
-    [SerializeField]
-    float maxHp = 3;
+    // [SerializeField]
+    float timeBetweenShots = 1;
+    // [SerializeField]
+    float maxHp = 1;
     float currentHp = 0;
     [SerializeField]
     Slider hpSlider;
@@ -25,9 +25,15 @@ public class PlayerController : MonoBehaviour
     // float pitch = shootSound.pitch;
     void Start()
     {
+        speed = DataHandler.instance.upgrades["MoveSpeed"];
+        maxHp = DataHandler.instance.upgrades["Health"];
+        float attackspeed = DataHandler.instance.upgrades["AttackSpeed"];
+        timeBetweenShots = 1/attackspeed;
+
         currentHp = maxHp;
         hpSlider.maxValue = maxHp;
         hpSlider.value = maxHp;
+
     }
     void Update()
     {

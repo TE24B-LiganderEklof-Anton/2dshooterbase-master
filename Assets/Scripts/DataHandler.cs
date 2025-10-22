@@ -16,14 +16,24 @@ public class DataHandler : MonoBehaviour
         }
         instance = this;
         DontDestroyOnLoad(gameObject);
-        ResetUpgrades();
+        
+        ApplyBaseUpgrades();
     }
-    public void ResetUpgrades()
+
+    public Dictionary<string, int> baseUpgrades = new()
     {
-        upgrades.Add("Health", 1);
-        upgrades.Add("AttackSpeed", 1);
-        upgrades.Add("MoveSpeed", 1);
-        upgrades.Add("Damage", 1);
+        {"Health", 3},
+        {"AttackSpeed", 3},
+        {"MoveSpeed", 3},
+        {"Damage", 3},
+    };
+
+    public void ApplyBaseUpgrades()
+    {
+        foreach(KeyValuePair<string, int> pair in baseUpgrades)
+        {
+            upgrades.Add(pair.Key,pair.Value);
+        }
     }
 
     //data goes here:
