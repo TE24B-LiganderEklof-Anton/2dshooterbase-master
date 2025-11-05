@@ -130,6 +130,9 @@ MonoBehaviour:
   explosionPrefab: {fileID: 1052859802758272, guid: 7e5c5b1c1b18764459c69710c7dc4adc,
     type: 3}
   speed: 5
+  maxRandomHp: 20
+  minRandomHp: 1
+  sizeMultiplier: 0.1
 --- !u!58 &701943943317169654
 CircleCollider2D:
   m_ObjectHideFlags: 0

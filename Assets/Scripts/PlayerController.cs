@@ -81,6 +81,8 @@ public class PlayerController : MonoBehaviour
             bolt.GetComponent<BoltController>().ySpeed += ySpeed;
             bolt.GetComponent<BoltController>().xSpeed += xSpeed;
 
+            // bolt.GetComponent<BoltController>().damage = DataHandler.instance.upgrades["Damage"];
+
             // float maxPitch = pitch + pitchvariation;
             // float randompitch = Random.Range(-maxPitch,maxPitch);
             // shootSound.pitch = randompitch;
@@ -101,6 +103,8 @@ public class PlayerController : MonoBehaviour
         {
             SceneManager.LoadScene("GameOver");
         }
+
+        
     }
 
 }

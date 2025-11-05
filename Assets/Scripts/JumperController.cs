@@ -24,6 +24,7 @@ public class JumperController : MonoBehaviour
             Rigidbody2D rigidBody = GetComponent<Rigidbody2D>();
             rigidBody.linearVelocityY = 0;
             rigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            // rigidBody.AddTorque(10, ForceMode2D.Impulse);
         }
     }
 }

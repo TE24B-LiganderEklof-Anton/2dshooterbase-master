@@ -24,8 +24,8 @@ public class DataHandler : MonoBehaviour
     {
         {"Health", 3},
         {"AttackSpeed", 3},
-        {"MoveSpeed", 3},
-        {"Damage", 3},
+        {"MoveSpeed", 5},
+        {"Damage", 1},
     };
 
     public void ApplyBaseUpgrades()
