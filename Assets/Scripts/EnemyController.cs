@@ -15,14 +15,28 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     int minRandomHp = 1;
     int hp;
-
     [SerializeField]
     float sizeMultiplier = 1.1f;
     float size = 1;
 
+    [SerializeField]
+    GameObject boltPrefab;
+    [SerializeField]
+    float minFireRateValue = 1;
+    [SerializeField]
+    float maxFireRateValue = 10;
+
+    float fireCooldown;
+    float timeSinceLastFire = 0;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        float fireRate = UnityEngine.Random.Range(minFireRateValue, maxFireRateValue);
+        fireRate = Mathf.Sqrt(fireRate);
+        fireCooldown = 1 / fireRate;
+        print(fireCooldown);
+
         hp = UnityEngine.Random.Range(minRandomHp, maxRandomHp+1);
 
         size = 1+(hp * sizeMultiplier);
@@ -40,13 +54,26 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 moveVector = Vector2.down;
-        transform.Translate(moveVector * Time.deltaTime * speed);
+        Vector2 moveVector = Vector2.down*speed;
+        transform.Translate(moveVector * Time.deltaTime);
 
-        if (transform.position.y < -(Camera.main.orthographicSize + (this.gameObject.transform.localScale.y/2)))
+        if (transform.position.y < -(Camera.main.orthographicSize + (this.gameObject.transform.localScale.y / 2)))
         {
             Destroy(this.gameObject);
         }
+        if (timeSinceLastFire >= fireCooldown)
+        {
+            print("fire");
+            GameObject bolt = Instantiate(boltPrefab, transform.position, Quaternion.identity);
+            BoltController boltController = bolt.GetComponent<BoltController>();
+            boltController.xSpeed = -(moveVector.x+boltController.xSpeed);
+            boltController.ySpeed = -(moveVector.y+boltController.ySpeed);
+            boltController.targetTag = "Player";
+            bolt.tag = "Enemy";
+
+            timeSinceLastFire = 0;
+        }
+        timeSinceLastFire += Time.deltaTime;
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -59,7 +86,6 @@ public class EnemyController : MonoBehaviour
         {
             hp = 0;
         }
-        print(hp);
         if (hp <= 0)
         {
             GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);

@@ -133,6 +133,9 @@ MonoBehaviour:
   maxRandomHp: 20
   minRandomHp: 1
   sizeMultiplier: 0.1
+  boltPrefab: {fileID: 1287502262990996, guid: 4dd15c7fe51711c48ba135fef149bbf8, type: 3}
+  minAttackCooldown: 1
+  maxAttackCooldown: 10
 --- !u!58 &701943943317169654
 CircleCollider2D:
   m_ObjectHideFlags: 0

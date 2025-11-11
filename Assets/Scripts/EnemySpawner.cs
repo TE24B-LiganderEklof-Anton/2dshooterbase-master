@@ -10,6 +10,8 @@ public class EnemySpawner : MonoBehaviour
     float minSpawnCooldown = 0.1f;
     float timeSinceLastSpawn = 0;
     float timeToNextSpawn = 0.2f;
+
+
     void Update()
     {
         timeSinceLastSpawn += Time.deltaTime;

@@ -571,8 +571,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   enemyPrefab: {fileID: 1455718659814362, guid: bf43fe3ed09cec246b4f2f367f9817fa,
     type: 3}
-  maxSpawnCooldown: 0.2
-  minSpawnCooldown: 0.1
+  maxSpawnCooldown: 0.1
+  minSpawnCooldown: 0.2
 --- !u!4 &806388052
 Transform:
   m_ObjectHideFlags: 0
