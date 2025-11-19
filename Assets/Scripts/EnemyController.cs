@@ -25,6 +25,8 @@ public class EnemyController : MonoBehaviour
     float minFireRateValue = 1;
     [SerializeField]
     float maxFireRateValue = 10;
+    [SerializeField]
+    UnityEngine.Color boltColor;
 
     float fireCooldown;
     float timeSinceLastFire = 0;
@@ -33,7 +35,7 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         float fireRate = UnityEngine.Random.Range(minFireRateValue, maxFireRateValue);
-        fireRate = Mathf.Sqrt(fireRate);
+        fireRate = Mathf.Sqrt(fireRate)/2;
         fireCooldown = 1 / fireRate;
         print(fireCooldown);
 
@@ -69,7 +71,9 @@ public class EnemyController : MonoBehaviour
             boltController.xSpeed = -(moveVector.x+boltController.xSpeed);
             boltController.ySpeed = -(moveVector.y+boltController.ySpeed);
             boltController.targetTag = "Player";
-            bolt.tag = "Enemy";
+            bolt.tag = "EnemyProjectile";
+            bolt.GetComponent<SpriteRenderer>().color = boltColor;
+            bolt.transform.localScale *= size;
 
             timeSinceLastFire = 0;
         }

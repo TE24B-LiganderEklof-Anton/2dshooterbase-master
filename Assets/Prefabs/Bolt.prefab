@@ -131,6 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   ySpeed: 20
   xSpeed: 0
+  targetTag: Enemy
 --- !u!70 &2394052752988826117
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
