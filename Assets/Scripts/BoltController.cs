@@ -22,7 +22,9 @@ public class BoltController : MonoBehaviour
         // print(angle);
         this.gameObject.transform.rotation = Quaternion.Euler(0f, 0f, angle-90);
 
-        if (transform.position.y > Camera.main.orthographicSize + 1)
+        float yDespawnDistance = Camera.main.orthographicSize + this.gameObject.transform.localScale.y/2;
+    
+        if (transform.position.y > yDespawnDistance || transform.position.y < -yDespawnDistance)
         {
             Destroy(this.gameObject);
         }

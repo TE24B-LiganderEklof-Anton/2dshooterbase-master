@@ -37,13 +37,11 @@ public class EnemyController : MonoBehaviour
         float fireRate = UnityEngine.Random.Range(minFireRateValue, maxFireRateValue);
         fireRate = Mathf.Sqrt(fireRate)/2;
         fireCooldown = 1 / fireRate;
-        print(fireCooldown);
 
         hp = UnityEngine.Random.Range(minRandomHp, maxRandomHp+1);
 
         size = 1+(hp * sizeMultiplier);
         this.gameObject.transform.localScale *= size;
-        // print(size);
 
         Vector2 position = new();
         float aspectsize = Camera.main.aspect;
@@ -65,7 +63,6 @@ public class EnemyController : MonoBehaviour
         }
         if (timeSinceLastFire >= fireCooldown)
         {
-            print("fire");
             GameObject bolt = Instantiate(boltPrefab, transform.position, Quaternion.identity);
             BoltController boltController = bolt.GetComponent<BoltController>();
             boltController.xSpeed = -(moveVector.x+boltController.xSpeed);

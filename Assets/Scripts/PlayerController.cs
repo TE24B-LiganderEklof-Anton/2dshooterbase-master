@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour
     // [SerializeField]
     float maxHp = 1;
     float currentHp = 0;
+    float timeSinceHit = 0;
+    [SerializeField]
+    float timeBetweenhpRegen = 3;
     [SerializeField]
     Slider hpSlider;
 
@@ -28,7 +31,7 @@ public class PlayerController : MonoBehaviour
         speed = DataHandler.instance.upgrades["MoveSpeed"];
         maxHp = DataHandler.instance.upgrades["Health"];
         float attackspeed = DataHandler.instance.upgrades["AttackSpeed"];
-        timeBetweenShots = 1/attackspeed;
+        timeBetweenShots = 1 / attackspeed;
 
         currentHp = maxHp;
         hpSlider.maxValue = maxHp;
@@ -78,8 +81,9 @@ public class PlayerController : MonoBehaviour
             float ySpeed = finalMovement.y / Time.deltaTime;
             float xSpeed = finalMovement.x / Time.deltaTime;
             GameObject bolt = Instantiate(boltprefab, transform.position, Quaternion.identity);
+
             bolt.GetComponent<BoltController>().ySpeed += ySpeed;
-            bolt.GetComponent<BoltController>().xSpeed += xSpeed;
+            bolt.GetComponent<BoltController>().xSpeed += xSpeed/3;
 
             // bolt.GetComponent<BoltController>().damage = DataHandler.instance.upgrades["Damage"];
 
@@ -89,6 +93,16 @@ public class PlayerController : MonoBehaviour
             AudioSource shootSound = GetComponent<AudioSource>();
             shootSound.Play();
             timeSinceLastShot = 0;
+
+        }
+        //==============================================================================================
+        //HpRegen:
+        timeSinceHit += Time.deltaTime;
+        if (timeSinceHit >= timeBetweenhpRegen && currentHp < maxHp)
+        {
+            currentHp++;
+            hpSlider.value = currentHp;
+            timeSinceHit = 0;
         }
     }
     void OnTriggerEnter2D(Collider2D collision)
@@ -97,6 +111,7 @@ public class PlayerController : MonoBehaviour
         {
             currentHp--;
             hpSlider.value = currentHp;
+            timeSinceHit = 0;
         }
 
         if (currentHp <= 0)
@@ -104,7 +119,7 @@ public class PlayerController : MonoBehaviour
             SceneManager.LoadScene("GameOver");
         }
 
-        
+
     }
 
 }
